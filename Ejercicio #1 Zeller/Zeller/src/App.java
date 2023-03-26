@@ -4,12 +4,13 @@ import javax.swing.JOptionPane;
 
 public class App {
     public static void main(String[] args) {
-        int dia = 18;
+        int dia = 1;
         int mes = 3;
-        int anio = 2000;
+        int anio = 2004;
         LocalDate l = LocalDate.of(anio, mes, dia);
-        l.getDayOfMonth();
-        JOptionPane.showMessageDialog(null, getDiaSemana(l));
+
+        JOptionPane.showMessageDialog(null,
+                "Real: " + l.getDayOfWeek().toString().toLowerCase() + "\nCalculado: " + getDiaSemana(l));
 
     }
 
@@ -45,7 +46,11 @@ public class App {
 
     public static String getDiaSemana(int ds) {
         String[] diaSm = { "domingo", "lunes", "martes", "miercoles", "jueves", "viernes", "sabado" };
-        return diaSm[ds];
+        try {
+            return diaSm[ds];
+        } catch (ArrayIndexOutOfBoundsException e) {
+            return e.getMessage();
+        }
     }
 
     public static String getDiaSemana(LocalDate date) {
@@ -59,6 +64,9 @@ public class App {
         int mesReal = getMes(mes);
         int anio = getAnio(anioCompleto, mesReal);
         int siglo = getSiglo(anioCompleto, mesReal);
-        return (((13 * mesReal - 1) / 5 + (anio / 4) + (siglo / 4)) + dia + anio - 2 * siglo) % 7;
+        int resultado = ((13 * mesReal - 1) / 5 + (anio / 4) + (siglo / 4)) + dia + anio - 2 * siglo;
+        while (resultado < 0)
+            resultado += 7;
+        return resultado % 7;
     }
 }
