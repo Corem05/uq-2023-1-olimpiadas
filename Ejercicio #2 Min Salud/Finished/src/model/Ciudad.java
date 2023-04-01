@@ -33,11 +33,9 @@ public class Ciudad {
 	 * @return
 	 */
 	public boolean addNino(String identificacion, String nombre, int sexo, boolean estaVacunado) {
-		Nino nino = new Nino(identificacion, nombre, sexo, estaVacunado);
-		if (sexo != 1 && sexo != 2)
+		if (!validarSexo(sexo) || validarNino(identificacion))
 			return false;
-
-		return getListaNinos().add(nino);
+		return getListaNinos().add(new Nino(identificacion, nombre, sexo, estaVacunado));
 	}
 
 	/**
@@ -57,6 +55,10 @@ public class Ciudad {
 		return nino;
 	}
 
+	public boolean validarNino(String identificacion) {
+		return buscarNino(identificacion) != null;
+	}
+
 	public boolean validarSexo(int sexo) {
 		return sexo == Nino.SEXO_FEMENINO || sexo == Nino.SEXO_MASCULINO;
 	}
@@ -70,11 +72,9 @@ public class Ciudad {
 	 * @return
 	 */
 	public boolean addNino(String identificacion, String nombre, int sexo) {
-		Nino nino = new Nino(identificacion, nombre, sexo);
-		if (sexo != 1 && sexo != 2)
+		if (!validarSexo(sexo) || validarNino(identificacion))
 			return false;
-
-		return getListaNinos().add(nino);
+		return getListaNinos().add(new Nino(identificacion, nombre, sexo));
 	}
 
 	/**
@@ -142,5 +142,13 @@ public class Ciudad {
 				cant++;
 		}
 		return cant;
+	}
+
+	public boolean seVacuno() {
+		boolean seVacuno = false;
+		for (int i = 0; i < listaNinos.size() && !seVacuno; i++)
+			if (listaNinos.get(i).isEstaVacunado())
+				seVacuno = true;
+		return seVacuno;
 	}
 }
