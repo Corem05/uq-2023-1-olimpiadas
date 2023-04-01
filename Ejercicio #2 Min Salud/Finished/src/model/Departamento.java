@@ -5,8 +5,10 @@ import java.util.List;
 
 public class Departamento {
 	private final List<Ciudad> listaCiudades = new ArrayList<Ciudad>();
+	private String nombre;
 
 	public Departamento(String nombre) {
+		this.nombre = nombre;
 	}
 
 	public List<Ciudad> getListaCiudades() {
@@ -27,4 +29,13 @@ public class Departamento {
 				cant++;
 		return cant;
 	}
+
+	public String getNombre() {
+		return nombre;
+	}
+
+	public void setNombre(String nombre) {
+		this.nombre = nombre;
+	}
+
 }
