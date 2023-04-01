@@ -13,4 +13,18 @@ public class Departamento {
 		return listaCiudades;
 	}
 
+	public int obtenerCantidadNinos() {
+		int cant = 0;
+		for (int i = 0; i < listaCiudades.size(); i++)
+			cant += listaCiudades.get(i).obtenerCantidadNinos();
+		return cant;
+	}
+
+	public int obtenerCantidadCiudadesVacunadas() {
+		int cant = 0;
+		for (int i = 0; i < listaCiudades.size(); i++)
+			if (listaCiudades.get(i).seVacuno())
+				cant++;
+		return cant;
+	}
 }
