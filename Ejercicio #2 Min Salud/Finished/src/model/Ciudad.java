@@ -94,7 +94,7 @@ public class Ciudad {
 	public int obtenerCantidadNinosVacunados() {
 		int cant = 0;
 		for (Nino nino : listaNinos)
-			if (nino.isEstaVacunado())
+			if (nino.estaVacunado())
 				cant++;
 		return cant;
 	}
@@ -108,7 +108,7 @@ public class Ciudad {
 		int cant = 0;
 		for (int i = 0; i < getListaNinos().size(); i++) {
 			Nino nino = getListaNinos().get(i);
-			if (!nino.isEstaVacunado())
+			if (!nino.estaVacunado())
 				cant++;
 		}
 		return cant;
@@ -147,7 +147,7 @@ public class Ciudad {
 	public boolean seVacuno() {
 		boolean seVacuno = false;
 		for (int i = 0; i < listaNinos.size() && !seVacuno; i++)
-			if (listaNinos.get(i).isEstaVacunado())
+			if (listaNinos.get(i).estaVacunado())
 				seVacuno = true;
 		return seVacuno;
 	}

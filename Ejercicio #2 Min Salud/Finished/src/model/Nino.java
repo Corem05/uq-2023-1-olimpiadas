@@ -39,7 +39,7 @@ public class Nino {
 		this.sexo = sexo;
 	}
 
-	public boolean isEstaVacunado() {
+	public boolean estaVacunado() {
 		return estaVacunado;
 	}
 
