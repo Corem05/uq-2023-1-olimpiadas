@@ -13,10 +13,21 @@ public class Pais {
 
 	public int obtenerCantidadNinos() {
 		int cant = 0;
-		for (int i = 0; i < listaDepartamentos.size(); i++) {
-			Departamento departamento =  listaDepartamentos.get(i);
-			cant += departamento.obtenerCantidadNinos();
-		} return cant;
+		for (int i = 0; i < getListaDepartamentos().size(); i++)
+			cant += getListaDepartamentos().get(i).obtenerCantidadNinos();
+		return cant;
 	}
-	
+
+	public String getNombre() {
+		return nombre;
+	}
+
+	public void setNombre(String nombre) {
+		this.nombre = nombre;
+	}
+
+	public List<Departamento> getListaDepartamentos() {
+		return listaDepartamentos;
+	}
+
 }
