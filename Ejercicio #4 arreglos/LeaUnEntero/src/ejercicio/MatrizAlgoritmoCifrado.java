@@ -35,7 +35,7 @@ public class MatrizAlgoritmoCifrado {
 
 	/**
 	 * 
-	 * Obtiene el tamaño preferido de la matriz
+	 * Obtiene el tamaño preferido de la matriz para que quepa en un 
 	 * 
 	 * @param num el tamanio de la matriz
 	 * @return un arreglo con ancho en la posicion 0 y alto en la 1
